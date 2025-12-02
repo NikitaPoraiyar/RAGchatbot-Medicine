@@ -11,6 +11,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const PORT = process.env.PORT || 5000;
+
+
 const {
     ASTRA_DB_NAMESPACE,
     ASTRA_DB_COLLECTION,
@@ -110,4 +113,10 @@ app.post("/api/chat", async (req, res) => {
     }
 });
 
-app.listen(3001, () => console.log("Backend running on port 3001"));
+app.get("/", (req, res) => {
+    res.send("Backend is running ✅");
+});
+
+app.listen(PORT, () => {
+    console.log(`Backend running on port ${PORT}`);
+});
