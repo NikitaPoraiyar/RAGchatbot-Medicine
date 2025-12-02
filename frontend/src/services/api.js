@@ -1,5 +1,7 @@
 export async function sendChatMessage(messages) {
-    const res = await fetch("http://localhost:5000/api/chat", {
+        const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+    const res = await fetch(`${backendUrl}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages }),
